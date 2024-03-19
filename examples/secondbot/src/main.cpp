@@ -27,7 +27,7 @@ int main() {
     movement.turn(-20);
     //first rock collected
     movement.drive_until(true, [&] {return button4.is_pressed();});
-    movement.turn(15);
+    movement.turn(18);
     movement.drive(10);
     //second rock collected
     //code below to position the second bot, to allow the orange poms to go under the arms
