@@ -11,8 +11,8 @@ int main() {
     auto button4 = Button("button");
     auto servo1 = Servo("servo1");
 
-    //Await Game Start (remove true when activating using light instead of the button)
-    RIP::await_game_start(true);
+    //Await Game Start (remove true when activating using light instead of the button); Deactivated for the time being
+    //RIP::await_game_start(true);
 
     // --- Botball Strategy ---
     //Open Airlock on set path; return to starting position and bring rocks to rock heap; return to starting position and close airlock;
@@ -24,7 +24,7 @@ int main() {
 
     //Collecting the rocks for the rock heap. (Currently testing)
     movement.drive(40);
-    movement.turn(-20);
+    movement.turn(-18);
     //first rock collected
     movement.drive_until(true, [&] {return button4.is_pressed();});
     movement.turn(18);
@@ -46,7 +46,7 @@ int main() {
     movement.turn(30);
     movement.drive_until(false, [&] {return button1.is_pressed() && button2.is_pressed();});
     movement.drive(70);
-    movement.turn(70);
+    movement.turn(90);
 
     //Line up to reach Airlock the same way consistently.
     movement.set_speed(-1, -1);
@@ -54,7 +54,7 @@ int main() {
     movement.freeze();
     servo1.move_to(-30);
     movement.drive(30);
-    movement.turn(-150);
+    movement.turn(-140);
 
     //Driving into Airlock.
     movement.drive(15);
