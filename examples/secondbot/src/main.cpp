@@ -19,12 +19,12 @@ int main() {
 
     //Line up at start of game.
     movement.set_speed(-1, -1);
-    wait_for([&] { return button1.is_pressed() && button2.is_pressed(); });
+    wait_for([&] {return button1.is_pressed() && button2.is_pressed(); });
     movement.freeze();
 
     //Collecting the rocks for the rock heap. (Currently testing)
     movement.drive(40);
-    movement.turn(-18);
+    movement.turn(-15);
     //first rock collected
     movement.drive_until(true, [&] {return button4.is_pressed();});
     movement.turn(18);
@@ -43,10 +43,10 @@ int main() {
 
     //Return to proper position in order to open AirLock
     movement.drive(-35);
-    movement.turn(30);
+    movement.turn(35);
     movement.drive_until(false, [&] {return button1.is_pressed() && button2.is_pressed();});
     movement.drive(70);
-    movement.turn(90);
+    movement.turn(85);
 
     //Line up to reach Airlock the same way consistently.
     movement.set_speed(-1, -1);
@@ -62,6 +62,8 @@ int main() {
 
     //Opening AirLock.
     movement.drive(-15);
+
+    //Add here: Have the second bot drive to the lava tube, so the mainbot can use the container to store the poms.
 
     //Lineup to properly close.
     movement.drive(15);
