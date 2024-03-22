@@ -1,20 +1,27 @@
 cmake_minimum_required(VERSION 3.16)
-project(Main_Example)
+project(WeCodeIT)
 
-set(TARGET botball_user_program)
+set(CMAKE_CXX_STANDARD 17)
 
+# Find all source files
+file(GLOB SRC_FILES
+        "src/*.cpp"
+)
+
+include_directories(include)
+
+# Logging
 find_package(riplib REQUIRED)
-find_package(Boost REQUIRED COMPONENTS system)
-find_package(Threads REQUIRED)
-find_package(OpenCV REQUIRED)
 
-file(GLOB_RECURSE SRC_FILES "src/*.cpp")
-add_executable(${TARGET} ${SRC_FILES})
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/../bin)
 
-target_include_directories(${TARGET} PUBLIC include)
+SET(GCC_COVERAGE_COMPILE_FLAGS "-O1 -std=c++17 -Wall -Wextra")
+SET(GCC_COVERAGE_LINK_FLAGS "-lboost_system -lpthread")
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}")
+SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${GCC_COVERAGE_LINK_FLAGS}")
 
-target_compile_features(${TARGET} PUBLIC cxx_std_17)
-target_compile_options(${TARGET} PRIVATE -O1 -Wall -Wextra)
-set_target_properties(${TARGET} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/../bin)
+# Add source files to executable
+add_executable(botball_user_program ${SRC_FILES})
 
-target_link_libraries(${TARGET} PUBLIC rip::riplib Boost::system Threads::Threads ${OpenCV_LIBS})
+# Link libraries
+target_link_libraries(botball_user_program PUBLIC rip::riplib)
