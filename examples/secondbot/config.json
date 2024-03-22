@@ -1,6 +1,15 @@
 {
+  "servo1": {
+    "port": 0,
+    "init_angle": -82.5,
+    "min_angle": -82.5,
+    "max_angle": 82.5
+  },
+  "button": {
+    "port": 0
+  },
   "button1": {
-  "port": 1
+    "port": 1
   },
   "button2": {
     "port": 2
@@ -8,10 +17,7 @@
   "button3": {
     "port": 3
   },
-  "servo1": {
-    "port": 0
-  },
-  "button": {
+  "starting_sensor": {
     "port": 0
   },
   "gyro": {
@@ -20,10 +26,10 @@
   },
   "movement": {
     "left_motor": {
-      "port": 1
+      "port": 2
     },
     "right_motor": {
-      "port": 0
+      "port": 3
     },
     "left_sensor": {
       "port": 0
@@ -31,7 +37,7 @@
     "right_sensor": {
       "port": 1
     },
-    "start_speed": 0.25,
+    "start_speed": 1,
     "end_speed": 0.18,
     "encoder_accel_cm": 3.5,
     "encoder_decel_cm": 7.0,
