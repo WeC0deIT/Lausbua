@@ -24,9 +24,10 @@ int main() {
 
     //Collecting the rocks for the rock heap. (Currently testing)
     movement.drive(40);
-    movement.turn(-15);
+    movement.turn(-17);
     //first rock collected
     movement.drive_until(true, [&] {return button4.is_pressed();});
+    movement.freeze();
     movement.turn(18);
     movement.drive(10);
     //second rock collected
@@ -45,6 +46,7 @@ int main() {
     movement.drive(-35);
     movement.turn(35);
     movement.drive_until(false, [&] {return button1.is_pressed() && button2.is_pressed();});
+    movement.freeze();
     movement.drive(70);
     movement.turn(85);
 
@@ -53,8 +55,8 @@ int main() {
     wait_for([&] {return (button1.is_pressed() && button2.is_pressed())|| button3.is_pressed();});
     movement.freeze();
     servo1.move_to(-30);
-    movement.drive(30);
-    movement.turn(-140);
+    movement.drive(31);
+    movement.turn(-142);
 
     //Driving into Airlock.
     movement.drive(15);
@@ -63,11 +65,21 @@ int main() {
     //Opening AirLock.
     movement.drive(-15);
 
-    //Add here: Have the second bot drive to the lava tube, so the mainbot can use the container to store the poms.
+    //Have the second bot drive to the lava tube area, so the mainbot can use the container to store the poms.
+    movement.drive(1);
+    servo1.move_to(-80);
+    movement.freeze(100);
+    movement.drive(-10);
+    movement.turn(-40);
+    movement.drive_until(false, [&] {return button1.is_pressed() && button2.is_pressed();});
+    movement.freeze();
+    movement.turn(-91);
+    movement.drive_until(false, [&] {return button1.is_pressed() && button2.is_pressed();});
+    movement.freeze();
 
     //Lineup to properly close.
     movement.drive(15);
-    servo1.move_to(-30);
+    servo1.move_to(-80);
     movement.drive(-15);
 
     RIP::shutdown();
