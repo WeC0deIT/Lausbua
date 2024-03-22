@@ -63,7 +63,17 @@ int main() {
     //Opening AirLock.
     movement.drive(-15);
 
-    //Add here: Have the second bot drive to the lava tube, so the mainbot can use the container to store the poms.
+    //Have the second bot drive to the lava tube area, so the mainbot can use the container to store the poms.
+    movement.drive(1);
+    servo1.move_to(-80);
+    movement.freeze(100);
+    movement.drive(-10);
+    movement.turn(-40);
+    movement.drive_until(false, [&] {return button1.is_pressed() && button2.is_pressed();});
+    movement.freeze();
+    movement.turn(-91);
+    movement.drive_until(false, [&] {return button1.is_pressed() && button2.is_pressed();});
+    movement.freeze();
 
     //Lineup to properly close.
     movement.drive(15);
