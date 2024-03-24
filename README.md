@@ -1,7 +1,7 @@
 # Program for the Second Bot
 
 This is the GitHub Repository for the Second Bot of the team WeCodeIT with the team number 0602.
-This Repository contains a file "examples/secondbot/src" within it being the code of the Bot which is currently being tested and will be used for the Botball competition.
+This Repository contains a file "examples/secondbot" within it being the code of the Bot which is currently being tested and will be used for the Botball competition.
 As of yet, the program is still unfinished. To make the code easier to understand, various comments explaining what a block of code will do have been added.
 
 ## Problems and Bug Fixes.
