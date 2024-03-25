@@ -1,8 +1,8 @@
 {
   "servo1": {
     "port": 0,
-    "init_angle": -82.5,
-    "min_angle": -82.5,
+    "init_angle": -64,
+    "min_angle": -64,
     "max_angle": 82.5
   },
   "button1": {
